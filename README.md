@@ -48,7 +48,6 @@ Active domain detected: googel.com -> 93.184.216.34
 
 - Python 3
 - socket library
-- itertools
 - string handling
 
 ## Project Structure
