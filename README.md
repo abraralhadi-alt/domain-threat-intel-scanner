@@ -8,7 +8,7 @@ This project identifies suspicious lookalike domains that may be used in phishin
 
 ## Features
 
-- Generates typo-squatting domain variations
+- Generates typo-squatting domain variations:
   - Character omission
   - Character substitution
   - Adjacent key swaps
@@ -19,30 +19,10 @@ This project identifies suspicious lookalike domains that may be used in phishin
 
 ## How It Works
 
-1. The user inputs a target domain (for example, google.com)
+1. The user inputs a target domain (e.g., google.com)
 2. The tool generates multiple domain permutations
 3. Each variant is checked using DNS resolution
-4. Domains that resolve successfully are flagged for review
-
-## Example
-
-Input:
-```
-google.com
-```
-
-Generated variants:
-```
-gogle.com
-gooogle.com
-googel.com
-goog1e.com
-```
-
-Output:
-```
-Active domain detected: googel.com -> 93.184.216.34
-```
+4. Active domains are flagged for review
 
 ## Technologies Used
 
@@ -62,20 +42,54 @@ domain-threat-intel-scanner/
 
 ## Getting Started
 
+### Requirements
+- Python 3
+
+This project uses only Python standard libraries, so no external dependencies are required.
+
 ### Clone the repository
+
 ```bash
 git clone https://github.com/abraralhadi-alt/domain-threat-intel-scanner.git
 cd domain-threat-intel-scanner
 ```
 
 ### Run the tool
+
 ```bash
 python scanner.py
+```
+
+## Usage
+
+Enter a domain name without the TLD when prompted:
+
+```
+Enter domain (without TLD): google
+```
+
+The tool will:
+- Use `.com` as the default TLD
+- Generate domain permutations
+- Scan DNS availability for the first 15 results
+
+## Example Output
+
+```
+g0ogle.com    | ACTIVE (IP: 142.250.x.x)
+ggoogle.com   | ACTIVE (IP: 142.250.x.x)
+giogle.com    | INACTIVE
 ```
 
 ## Purpose
 
 This project is intended for educational and defensive cybersecurity use only, focusing on phishing detection and domain intelligence techniques.
+
+## Limitations
+
+- Does not analyze website content or detect phishing behavior
+- Only performs DNS resolution checks
+- “ACTIVE” means the domain resolves to an IP address, not that it is malicious
 
 ## License
 
